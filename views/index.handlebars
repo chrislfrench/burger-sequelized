@@ -1,0 +1,68 @@
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4"><h1>Eat-Da-Burger</h1></div>
+<div class="col-md-4"></div>
+</div>
+
+<div class="container" id="header">
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4"><img src="http://southsea.speedypizza.co.uk/image/cache/data/burgers/cheese_burger-200x200.jpg" class="img-thumbnail" id=burgimg></div>
+  <div class="col-md-4"></div>
+</div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+  <h2><span id="center">Add a Burger</span></h2>
+  <form class="create-update-form" action="/" method="POST">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <button type="submit">Add a Burger</button>
+</form>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-2"></div>
+<div class="col-md-4">
+<h2>These are your choices</h2>
+<ul>
+  {{#each burgers}}
+    {{#unless this.eaten}}
+      <li>
+        {{this.name}}
+
+        <form action="/{{this.id}}?_method=PUT" method="POST">
+          <input type="hidden" name="eaten" value="true">
+          <button type="submit">Devour!</button>
+        </form>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>
+</div>
+<div class="col-md-4">
+<h2>Eaten Burgers</h2>
+<ul>
+  {{#each burgers}}
+    {{#if this.eaten}}
+      <li>
+        {{this.name}}
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>
+</div>
+<div class="col-md-2"></div>
+</div>
+
+
+
+
+
